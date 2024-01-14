@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/light_teal"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/logoImageView"
+        android:layout_width="241dp"
+        android:layout_height="208dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="84dp"
+        android:layout_marginTop="64dp"
+        android:src="@drawable/logo"
+        android:contentDescription="@string/save_for_plans_logo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/titleTextView"
+        android:layout_width="202dp"
+        android:layout_height="34dp"
+        android:layout_below="@id/logoImageView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="112dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/save_for_plans"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logoImageView" />
+
+    <Button
+        android:id="@+id/addPlansButton"
+        android:layout_width="320dp"
+        android:layout_height="48dp"
+        android:layout_below="@id/titleTextView"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="60dp"
+        android:onClick="onClickAddPlans"
+        android:text="@string/add_plan"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleTextView" />
+
+    <Button
+        android:id="@+id/bankAccountExpensesButton"
+        android:layout_width="320dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="32dp"
+        android:onClick="onClickBankAccountExpenses"
+        android:text="@string/savings_and_expenses"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewPlanButton" />
+
+    <Button
+        android:id="@+id/viewPlanButton"
+        android:layout_width="320dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="32dp"
+        android:onClick="onClickViewPlan"
+        android:text="@string/view_existing_plan"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addPlansButton" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
