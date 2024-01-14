@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SaveForPlan(CLayout)</string>
+    <string name="app_name">SaveForPlan</string>
     <string name="add_plan">Add Plan</string>
     <string name="salary_and_expenses">Salary and Expenses</string>
     <string name="view_existing_plan">View Existing Plan</string>

@@ -1,4 +1,4 @@
-package com.example.saveforplanclayout
+package com.example.saveforplan
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

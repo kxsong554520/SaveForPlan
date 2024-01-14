@@ -1,4 +1,4 @@
-package com.example.saveforplanclayout
+package com.example.saveforplan
 
 import org.junit.Test
 

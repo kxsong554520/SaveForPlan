@@ -33,6 +33,13 @@ class SalaryExpenses :AppCompatActivity(){
         val expenses: EditText = findViewById(R.id.input_expenses)
         val save_button: Button = findViewById(R.id.btnSaveAmountSavings)
 
+        val savedSalary = sharedPreferenceManager.getSalaryAmount()
+        val savedExpenses = sharedPreferenceManager.getExpensesAmount()
+
+        // Set the values in the EditText fields
+        savings.setText(savedSalary.toString())
+        expenses.setText(savedExpenses.toString())
+
         savings.setOnClickListener{
             showSoftKeyboard(savings)
         }

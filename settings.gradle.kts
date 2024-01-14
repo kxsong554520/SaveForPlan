@@ -13,6 +13,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "SaveForPlan(CLayout)"
+rootProject.name = "SaveForPlan"
 include(":app")
  

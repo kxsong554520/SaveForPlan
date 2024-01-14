@@ -41,6 +41,7 @@
         android:layout_marginStart="136dp"
         android:layout_marginTop="16dp"
         android:text="@string/add_plans"
+        android:textColor="#000000"
         android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logoImageView2" />
@@ -54,6 +55,7 @@
         android:layout_marginStart="12dp"
         android:layout_marginTop="36dp"
         android:text="@string/plan_name"
+        android:textColor="#000000"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addPlansText" />
@@ -68,6 +70,7 @@
         android:layout_toStartOf="@id/planNameLabel"
         android:hint="@string/insert_plan_name"
         android:minHeight="48dp"
+        android:textColor="#000000"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/planNameLabel" />
 
@@ -80,6 +83,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="18dp"
         android:text="@string/total_amount"
+        android:textColor="#000000"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/planNameEditText" />
@@ -94,6 +98,7 @@
         android:layout_toStartOf="@id/totalAmountLabel"
         android:hint="@string/amount_needed_to_achieve"
         android:minHeight="48dp"
+        android:textColor="#000000"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/totalAmountLabel" />
 

@@ -28,6 +28,7 @@
         android:layout_marginStart="112dp"
         android:layout_marginTop="20dp"
         android:text="@string/save_for_plans"
+        android:textColor="#000000"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logoImageView" />
@@ -51,7 +52,7 @@
         android:layout_marginStart="44dp"
         android:layout_marginTop="32dp"
         android:onClick="onClickBankAccountExpenses"
-        android:text="@string/savings_and_expenses"
+        android:text="@string/salary_and_expenses"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/viewPlanButton" />
 

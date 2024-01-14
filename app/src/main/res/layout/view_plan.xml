@@ -14,6 +14,7 @@
         android:layout_marginStart="136dp"
         android:layout_marginTop="16dp"
         android:text="@string/view_plan"
+        android:textColor="#000000"
         android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logoImageView" />
@@ -60,7 +61,7 @@
         android:layout_height="220dp"
         android:layout_marginStart="62dp"
         android:layout_marginTop="12dp"
-        android:background="#FFFFFF"
+        android:background="#604905"
         android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view_plan_title"></LinearLayout>
