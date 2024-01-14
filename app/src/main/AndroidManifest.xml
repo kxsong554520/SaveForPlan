@@ -24,7 +24,7 @@
 
         <activity android:name=".AddPlan" />
         <activity android:name=".ViewPlan" />
-        <activity android:name=".SavingsExpenses" />
+        <activity android:name=".SalaryExpenses" />
     </application>
 
 </manifest>

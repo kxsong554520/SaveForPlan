@@ -1,8 +1,6 @@
 package com.example.saveforplanclayout
 
-import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -25,7 +23,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun onClickBankAccountExpenses(view: View) {
-        val intent = Intent(this, SavingsExpenses::class.java)
+        val intent = Intent(this, SalaryExpenses::class.java)
         startActivity(intent)
     }
 }

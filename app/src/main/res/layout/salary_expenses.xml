@@ -39,7 +39,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginStart="56dp"
         android:layout_marginTop="16dp"
-        android:text="@string/savings_and_expenses"
+        android:text="@string/salary_and_expenses"
         android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logoImageView3" />

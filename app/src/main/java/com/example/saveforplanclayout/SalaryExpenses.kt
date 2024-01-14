@@ -9,11 +9,11 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
-class SavingsExpenses :AppCompatActivity(){
+class SalaryExpenses :AppCompatActivity(){
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.savings_expenses)
+        setContentView(R.layout.salary_expenses)
 
         //Initializing sharedPreferenceManager
         val sharedPreferenceManager = SharedPreferenceManager(this)
@@ -42,14 +42,14 @@ class SavingsExpenses :AppCompatActivity(){
         }
 
         save_button.setOnClickListener{
-            val saving_float = savings.text.toString().toFloat()
+            val salary_float = savings.text.toString().toFloat()
             val expenses_float = expenses.text.toString().toFloat()
 
             //Delete previous record from Shared Preference
             sharedPreferenceManager.clearAll(this)
 
             //Add new record into Shared Preference
-            sharedPreferenceManager.saveSalaryAmount(saving_float)
+            sharedPreferenceManager.saveSalaryAmount(salary_float)
             sharedPreferenceManager.saveExpensesAmount(expenses_float)
 
             Toast.makeText(this, "Successfully saved", Toast.LENGTH_SHORT).show()
