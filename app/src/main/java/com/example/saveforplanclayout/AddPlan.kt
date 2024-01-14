@@ -75,16 +75,15 @@ class AddPlan : AppCompatActivity() {
             val daysNeeded = calculateDaysNeeded(sharedPreferenceManager.getSavingsAmount(), totalCostOfPlans)
 
             // Display a success message
-            Toast.makeText(this, "Plan added successfully! Days needed: $daysNeeded", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Plan added successfully! You can achieve the plan this year", Toast.LENGTH_SHORT).show()
 
             // Update the shared preferences with the new plans list
             sharedPreferenceManager.savePlansList(plansList)
         } else {
-            // Remove the added plan since there's not enough money
-            plansList.remove(newPlan)
-
+            //TODO calculation logic
             // Display an insufficient funds message
-            Toast.makeText(this, "Insufficient funds. Please allocate more money.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Insufficient funds for this year...", Toast.LENGTH_SHORT).show()
+            sharedPreferenceManager.savePlansList(plansList)
         }
 
         // Move to ViewPlan activity after adding the plan
@@ -112,13 +111,15 @@ class AddPlan : AppCompatActivity() {
 
     // Function to calculate days needed
     private fun calculateDaysNeeded(savings: Float, totalCostOfPlan: Double): Int {
-        // Assuming daily expenses are hardcoded for now
-        val dailyExpenses = 10.0 // Replace with your logic to get daily expenses
+        //get daily expenses
+        val dailyExpenses = sharedPreferenceManager.getExpensesAmount()
 
-        // Calculate days needed using the provided formula
+
+        //TODO
+        // Edit formula
         val daysNeeded = ((savings - (dailyExpenses * 365)) / totalCostOfPlan).toInt()
 
-        return if (daysNeeded >= 0) daysNeeded else -1
+        return daysNeeded
     }
 
 }
