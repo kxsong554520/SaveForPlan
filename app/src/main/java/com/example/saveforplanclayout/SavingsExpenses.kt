@@ -2,7 +2,6 @@ package com.example.saveforplanclayout
 
 import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.inputmethod.InputMethodManager
 import android.widget.Button
@@ -50,10 +49,14 @@ class SavingsExpenses :AppCompatActivity(){
             sharedPreferenceManager.clearAll(this)
 
             //Add new record into Shared Preference
-            sharedPreferenceManager.saveSavingsAmount(saving_float)
+            sharedPreferenceManager.saveSalaryAmount(saving_float)
             sharedPreferenceManager.saveExpensesAmount(expenses_float)
 
             Toast.makeText(this, "Successfully saved", Toast.LENGTH_SHORT).show()
+
+            // Create an intent to go back to MainActivity
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
             }
 
     }

@@ -8,21 +8,22 @@ import com.google.gson.reflect.TypeToken
 class SharedPreferenceManager(context: Context) {
     companion object {
         private val PREFS_NAME = "MyPrefs"
-        private val SAVINGS_KEY = "savings_key"
+        private val SALARY_KEY = "salary_key"
         private val EXPENSES_KEY = "expenses_key"
+        private val PLAN_AMOUNT_KEY = "amount_key"
     }
 
     private val sharedPreferences: SharedPreferences =
         context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
 
-    fun saveSavingsAmount(amount: Float) {
+    fun saveSalaryAmount(amount: Float) {
         val editor = sharedPreferences.edit()
-        editor.putFloat(SAVINGS_KEY, amount)
+        editor.putFloat(SALARY_KEY, amount)
         editor.apply()
     }
 
-    fun getSavingsAmount(): Float {
-        return sharedPreferences.getFloat(SAVINGS_KEY, 0.0f)
+    fun getSalaryAmount(): Float {
+        return sharedPreferences.getFloat(SALARY_KEY, 0.0f)
     }
 
     fun saveExpensesAmount(amount: Float) {
@@ -34,7 +35,6 @@ class SharedPreferenceManager(context: Context) {
     fun getExpensesAmount(): Float {
         return sharedPreferences.getFloat(EXPENSES_KEY, 0.0f)
     }
-
 
     fun clearAll(context: Context) {
         val editor = sharedPreferences.edit()

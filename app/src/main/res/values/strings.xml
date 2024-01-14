@@ -16,7 +16,7 @@
     <string name="save">Save</string>
     <string name="daily_expenses">Daily Expenses</string>
     <string name="edit">Edit</string>
-    <string name="savings">Savings</string>
+    <string name="salary">Monthly Salary</string>
     <string name="view_plan">View Plan</string>
     <string name="clear_plans">Clear Plans</string>
 </resources>

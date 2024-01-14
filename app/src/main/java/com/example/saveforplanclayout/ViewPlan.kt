@@ -1,6 +1,5 @@
 package com.example.saveforplanclayout
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -9,8 +8,6 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.saveforplanclayout.AddPlan.Companion.plansList
-import com.google.gson.Gson
 
 class ViewPlan :AppCompatActivity(){
 
@@ -64,28 +61,27 @@ class ViewPlan :AppCompatActivity(){
 
     private fun createPlanView(plan: AddPlan.Plan): View {
         // Create a TextView to display plan details
+        val salary = sharedPreferenceManager.getSalaryAmount()
+        val expense = sharedPreferenceManager.getExpensesAmount()
         val planTextView = TextView(this)
-        val daysNeeded = calculateDaysNeeded(plan.totalAmount)
+        val daysNeeded = calculateDaysNeeded(salary, expense, plan.totalAmount)
 
         // Set text with plan name and days needed
-        planTextView.text = "Plan: ${plan.name}, Days Needed: $daysNeeded"
+        planTextView.text = "Plan: ${plan.name}\n Amount: ${plan.totalAmount}, Days Needed: $daysNeeded"
         planTextView.textSize = 18f
 
 
         return planTextView
     }
 
-    private fun calculateDaysNeeded(totalAmount: Double): Int {
-        // Assuming you have a function to get bank account amount
-        val bankAccountAmount = getCurrentBankAccountAmount()
+    private fun calculateDaysNeeded(m_salary: Float ,expenses:Float ,CostOfPlan: Double): Int {
 
-        // Assuming daily expenses are hardcoded for now
-        val dailyExpenses = 10.0 // Replace with your logic to get daily expenses
-
-        // Calculate days needed using the provided formula
-        val daysNeeded = ((bankAccountAmount - (dailyExpenses * 365)) / totalAmount).toInt()
-
-        return if (daysNeeded >= 0) daysNeeded else -1
+        val daysNeeded = (CostOfPlan/(m_salary - (expenses * 30))).toInt()
+        if (daysNeeded >= 1){
+            return daysNeeded
+        } else {
+            return 0
+        }
     }
 
     private fun getCurrentBankAccountAmount(): Double {
@@ -110,6 +106,6 @@ class ViewPlan :AppCompatActivity(){
     // Dummy function to get the initial bank account amount
     private fun getInitialBankAccountAmount(): Float {
         // Replace this with your logic to get the initial bank account amount
-        return sharedPreferenceManager.getSavingsAmount()
+        return sharedPreferenceManager.getSalaryAmount()
     }
 }

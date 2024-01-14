@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 class AddPlan : AppCompatActivity() {
 
     // Inner data class to represent a plan
-    data class Plan(val name: String, val totalAmount: Double)
+    data class Plan(val name: String, val totalAmount: Double, val daysNeeded: Int)
 
     companion object {
         var plansList: MutableList<Plan> = mutableListOf()
@@ -57,68 +57,38 @@ class AddPlan : AppCompatActivity() {
 
     // Function to add a plan
     private fun addPlan(planName: String, totalAmount: Double) {
+
+        val salaryAmount = sharedPreferenceManager.getSalaryAmount()
+        val expensesAmount = sharedPreferenceManager.getExpensesAmount()
+
+        val daysNeeded = calculateDaysNeeded(salaryAmount, expensesAmount,totalAmount)
+
         // Create a new plan
-        val newPlan = Plan(planName, totalAmount)
+        val newPlan = Plan(planName, totalAmount, daysNeeded)
 
         // Add the plan to the list
         plansList.add(newPlan)
 
-        // Calculate the total cost of all plans
-        val totalCostOfPlans = plansList.sumOf { it.totalAmount }
-
-        // Check if there is enough money for all plans
-        if (totalCostOfPlans <= getCurrentBankAccountAmount()) {
-            // Subtract the cost of plans from the bank account
-            subtractCostFromBankAccount(totalCostOfPlans)
-
-            // Calculate days needed using the provided formula
-            val daysNeeded = calculateDaysNeeded(sharedPreferenceManager.getSavingsAmount(), totalCostOfPlans)
-
-            // Display a success message
-            Toast.makeText(this, "Plan added successfully! You can achieve the plan this year", Toast.LENGTH_SHORT).show()
+        // Display a success message
+        Toast.makeText(this, "Plan added successfully! You can achieve the plan in $daysNeeded days", Toast.LENGTH_SHORT).show()
 
             // Update the shared preferences with the new plans list
             sharedPreferenceManager.savePlansList(plansList)
-        } else {
-            //TODO calculation logic
-            // Display an insufficient funds message
-            Toast.makeText(this, "Insufficient funds for this year...", Toast.LENGTH_SHORT).show()
-            sharedPreferenceManager.savePlansList(plansList)
-        }
 
         // Move to ViewPlan activity after adding the plan
         val intent = Intent(this, ViewPlan::class.java)
         startActivity(intent)
     }
 
-    // Function to get the current bank account amount considering the allocated money for plans
-    private fun getCurrentBankAccountAmount(): Double {
-        // Assuming you have a function to get the initial bank account amount
-        val initialBankAccountAmount = sharedPreferenceManager.getSavingsAmount()
-
-        // Calculate the remaining amount by subtracting the total cost of plans
-        return initialBankAccountAmount - plansList.sumOf { it.totalAmount }
-    }
-
-    // Function to subtract the cost of plans from the bank account
-    private fun subtractCostFromBankAccount(cost: Double) {
-        // Obtain the current amount from shared preferences
-        val currentAmount = sharedPreferenceManager.getSavingsAmount()
-
-        // Update the bank account amount after subtracting the cost
-        sharedPreferenceManager.saveSavingsAmount((currentAmount - cost).toFloat())
-    }
-
     // Function to calculate days needed
-    private fun calculateDaysNeeded(savings: Float, totalCostOfPlan: Double): Int {
-        //get daily expenses
-        val dailyExpenses = sharedPreferenceManager.getExpensesAmount()
-        //TODO
-        // Edit formula
-        val daysNeeded = ((savings - (dailyExpenses * 365)) / totalCostOfPlan).toInt()
+    private fun calculateDaysNeeded(m_salary: Float ,expenses:Float ,CostOfPlan: Double): Int {
 
-        return daysNeeded
+            val daysNeeded = (CostOfPlan/(m_salary - (expenses * 30))).toInt()
+            if (daysNeeded >= 1){
+                return (daysNeeded + 1)
+            } else {
+                return 0
+            }
     }
-
 }
 
