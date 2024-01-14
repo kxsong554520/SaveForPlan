@@ -113,8 +113,6 @@ class AddPlan : AppCompatActivity() {
     private fun calculateDaysNeeded(savings: Float, totalCostOfPlan: Double): Int {
         //get daily expenses
         val dailyExpenses = sharedPreferenceManager.getExpensesAmount()
-
-
         //TODO
         // Edit formula
         val daysNeeded = ((savings - (dailyExpenses * 365)) / totalCostOfPlan).toInt()

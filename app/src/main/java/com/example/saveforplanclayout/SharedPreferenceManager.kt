@@ -31,9 +31,10 @@ class SharedPreferenceManager(context: Context) {
         editor.apply()
     }
 
-    fun getExpensesAmount (): Float {
+    fun getExpensesAmount(): Float {
         return sharedPreferences.getFloat(EXPENSES_KEY, 0.0f)
     }
+
 
     fun clearAll(context: Context) {
         val editor = sharedPreferences.edit()
