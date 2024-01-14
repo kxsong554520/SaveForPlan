@@ -20,11 +20,9 @@ class ViewPlan :AppCompatActivity(){
 
         sharedPreferenceManager = SharedPreferenceManager(this)
 
-        // Back Button to return to home page
         val backButton: Button = findViewById(R.id.btnBack)
 
         backButton.setOnClickListener {
-            // Create an intent to go back to MainActivity
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
@@ -35,7 +33,7 @@ class ViewPlan :AppCompatActivity(){
             // Call the clearAll function from SharedPreferenceManager
             sharedPreferenceManager.clearAll(this)
 
-            // Clear the plansContainer in your layout
+            // Clear all plans
             val plansContainer: LinearLayout = findViewById(R.id.plansContainer)
             plansContainer.removeAllViews()
 
@@ -47,13 +45,13 @@ class ViewPlan :AppCompatActivity(){
     }
 
     private fun displayPlansAndMonths() {
-        // LinearLayout to add plans dynamically
+        // LinearLayout to show plans
         val plansContainer: LinearLayout = findViewById(R.id.plansContainer)
 
         // Retrieve the list of plans from SharedPreferences
         val loadedPlansList = sharedPreferenceManager.getPlansList()
 
-        // Iterate through the plans and add them to the layout
+        // For loop to show the list of plans
         for (plan in loadedPlansList) {
             val planView = createPlanView(plan)
             plansContainer.addView(planView)
@@ -61,18 +59,13 @@ class ViewPlan :AppCompatActivity(){
     }
 
     private fun createPlanView(plan: AddPlan.Plan): View {
-        // Create a TextView to display plan details
-        val salary = sharedPreferenceManager.getSalaryAmount()
-        val expense = sharedPreferenceManager.getExpensesAmount()
         val planTextView = TextView(this)
         val monthsNeeded = sharedPreferenceManager.getMonthsNeeded()
 
-        // Set text with plan name and days needed
+        // Set text with plan name and months needed
         planTextView.text = "Plan: ${plan.name}\n Amount: ${plan.totalAmount}, Months Needed: $monthsNeeded"
         planTextView.textSize = 18f
         planTextView.setTextColor(ContextCompat.getColor(this, android.R.color.white))
-
         return planTextView
     }
-
 }
