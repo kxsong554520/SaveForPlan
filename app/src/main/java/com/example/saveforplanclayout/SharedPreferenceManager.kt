@@ -10,7 +10,7 @@ class SharedPreferenceManager(context: Context) {
         private val PREFS_NAME = "MyPrefs"
         private val SALARY_KEY = "salary_key"
         private val EXPENSES_KEY = "expenses_key"
-        private val PLAN_AMOUNT_KEY = "amount_key"
+        private val MONTHS_KEY = "monthsneeded_key"
     }
 
     private val sharedPreferences: SharedPreferences =
@@ -34,6 +34,16 @@ class SharedPreferenceManager(context: Context) {
 
     fun getExpensesAmount(): Float {
         return sharedPreferences.getFloat(EXPENSES_KEY, 0.0f)
+    }
+
+    fun saveMonthsNeeded(amount: Float) {
+        val editor = sharedPreferences.edit()
+        editor.putFloat(MONTHS_KEY, amount)
+        editor.apply()
+    }
+
+    fun getMonthsNeeded(): Float {
+        return sharedPreferences.getFloat(MONTHS_KEY, 0.0f)
     }
 
     fun clearAll(context: Context) {

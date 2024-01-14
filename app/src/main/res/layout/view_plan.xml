@@ -61,9 +61,11 @@
         android:layout_height="220dp"
         android:layout_marginStart="62dp"
         android:layout_marginTop="12dp"
-        android:background="#604905"
+        android:background="#9F6E24"
         android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view_plan_title"></LinearLayout>
+        app:layout_constraintTop_toBottomOf="@+id/view_plan_title">
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

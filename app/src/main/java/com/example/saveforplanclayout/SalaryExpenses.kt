@@ -18,32 +18,28 @@ class SalaryExpenses :AppCompatActivity(){
         //Initializing sharedPreferenceManager
         val sharedPreferenceManager = SharedPreferenceManager(this)
 
-        // Find the back button by its ID
+        // Map the back button to its ID
         val backButton: Button = findViewById(R.id.btnBack)
-
-        // Return to previous activity
         backButton.setOnClickListener {
-            // Create an intent to go back to MainActivity
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
 
-        // User input savings and expenses
+        // Map the relevant EditText and Buttons to their ID
         val savings: EditText = findViewById(R.id.input_savings)
         val expenses: EditText = findViewById(R.id.input_expenses)
         val save_button: Button = findViewById(R.id.btnSaveAmountSavings)
 
+        //save the salary and expenses to shared Preference
         val savedSalary = sharedPreferenceManager.getSalaryAmount()
         val savedExpenses = sharedPreferenceManager.getExpensesAmount()
 
-        // Set the values in the EditText fields
         savings.setText(savedSalary.toString())
         expenses.setText(savedExpenses.toString())
 
         savings.setOnClickListener{
             showSoftKeyboard(savings)
         }
-
         expenses.setOnClickListener{
             showSoftKeyboard(expenses)
         }

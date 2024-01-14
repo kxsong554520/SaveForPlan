@@ -8,6 +8,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 
 class ViewPlan :AppCompatActivity(){
 
@@ -42,10 +43,10 @@ class ViewPlan :AppCompatActivity(){
             Toast.makeText(this, "Plans cleared successfully!", Toast.LENGTH_SHORT).show()
         }
 
-        displayPlansAndDays()
+        displayPlansAndMonths()
     }
 
-    private fun displayPlansAndDays() {
+    private fun displayPlansAndMonths() {
         // LinearLayout to add plans dynamically
         val plansContainer: LinearLayout = findViewById(R.id.plansContainer)
 
@@ -64,48 +65,14 @@ class ViewPlan :AppCompatActivity(){
         val salary = sharedPreferenceManager.getSalaryAmount()
         val expense = sharedPreferenceManager.getExpensesAmount()
         val planTextView = TextView(this)
-        val daysNeeded = calculateDaysNeeded(salary, expense, plan.totalAmount)
+        val monthsNeeded = sharedPreferenceManager.getMonthsNeeded()
 
         // Set text with plan name and days needed
-        planTextView.text = "Plan: ${plan.name}\n Amount: ${plan.totalAmount}, Days Needed: $daysNeeded"
+        planTextView.text = "Plan: ${plan.name}\n Amount: ${plan.totalAmount}, Months Needed: $monthsNeeded"
         planTextView.textSize = 18f
-
+        planTextView.setTextColor(ContextCompat.getColor(this, android.R.color.white))
 
         return planTextView
     }
 
-    private fun calculateDaysNeeded(m_salary: Float ,expenses:Float ,CostOfPlan: Double): Int {
-
-        val daysNeeded = (CostOfPlan/(m_salary - (expenses * 30))).toInt()
-        if (daysNeeded >= 1){
-            return daysNeeded
-        } else {
-            return 0
-        }
-    }
-
-    private fun getCurrentBankAccountAmount(): Double {
-        // Assuming you have a function to get the initial bank account amount
-        val initialBankAccountAmount = getInitialBankAccountAmount()
-
-        // Assuming you have a function to get the total cost of plans
-        val totalCostOfPlans = getTotalCostOfPlans()
-
-        // Calculate the remaining amount by subtracting the total cost of plans
-        return initialBankAccountAmount - totalCostOfPlans
-    }
-
-    private fun getTotalCostOfPlans(): Double {
-        // Retrieve the list of plans from SharedPreferences
-        val plansList = sharedPreferenceManager.getPlansList()
-
-        // Calculate the total cost of all plans
-        return plansList.sumOf { it.totalAmount }
-    }
-
-    // Dummy function to get the initial bank account amount
-    private fun getInitialBankAccountAmount(): Float {
-        // Replace this with your logic to get the initial bank account amount
-        return sharedPreferenceManager.getSalaryAmount()
-    }
 }
